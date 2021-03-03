@@ -1,0 +1,19 @@
+package main
+
+import (
+	"fmt"
+	"net/http"
+
+	handler "github.com/lcsval/gohtml/pkg/handlers"
+)
+
+const portNumber = ":8080"
+
+// main is the main application function
+func main() {
+	http.HandleFunc("/", handler.Home)
+	http.HandleFunc("/about", handler.About)
+
+	fmt.Println(fmt.Sprintf("Starting application on port %s", portNumber))
+	_ = http.ListenAndServe(portNumber, nil)
+}
