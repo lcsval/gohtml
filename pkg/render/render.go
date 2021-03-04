@@ -58,7 +58,8 @@ func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData)
 func CreateTemplateCache() (map[string]*template.Template, error) {
 	myCache := map[string]*template.Template{}
 
-	pages, err := filepath.Glob("C:\\Dev\\gohtml\\templates\\*.page.tmpl")
+	//pages, err := filepath.Glob("C:\\Dev\\gohtml\\templates\\*.page.tmpl") WINDOWS
+	pages, err := filepath.Glob("/home/lucasval/Dev/gohtml/templates/*.page.tmpl")
 	if err != nil {
 		return myCache, err
 	}
@@ -70,13 +71,15 @@ func CreateTemplateCache() (map[string]*template.Template, error) {
 			return myCache, err
 		}
 
-		matches, err := filepath.Glob("C:\\Dev\\gohtml\\templates\\*.layout.tmpl")
+		//matches, err := filepath.Glob("C:\\Dev\\gohtml\\templates\\*.layout.tmpl") WINDOWS
+		matches, err := filepath.Glob("/home/lucasval/Dev/gohtml/templates/*.layout.tmpl")
 		if err != nil {
 			return myCache, err
 		}
 
 		if len(matches) > 0 {
-			_, err := ts.ParseGlob("C:\\Dev\\gohtml\\templates\\*.layout.tmpl")
+			//_, err := ts.ParseGlob("C:\\Dev\\gohtml\\templates\\*.layout.tmpl") WINDOWS
+			_, err := ts.ParseGlob("/home/lucasval/Dev/gohtml/templates/*.layout.tmpl")
 			if err != nil {
 				return myCache, err
 			}
